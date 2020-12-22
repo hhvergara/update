@@ -5,12 +5,6 @@ import logging
 git_path = f'{os.getcwd()}/update'
 
 logging.basicConfig(level=logging.INFO)
-# GIT_PYTHON_TRACE = 'full'
-try:
-    repo = git.Repo(git_path)
-    repo.remotes.origin.pull("")
-except:
-    pass
 
 hcommit = repo.head.commit
 print(hcommit.diff())                  # diff tree against index
@@ -27,6 +21,11 @@ print(index.diff(None))                # diff index against working copy
 
 print(index.diff('HEAD'))              # diff index against current HEAD tree
 
+try:
+    repo = git.Repo(git_path)
+    repo.remotes.origin.pull("")
+except:
+    pass
 hcommit = repo.head.commit
 hcommit.diff(None)              # diff tree against working tree
 # Traverse added Diff objects only
