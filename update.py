@@ -64,3 +64,5 @@ date = tag.commit.committed_datetime
 date = f'{date.day}-{date.month}-{date.year}'
 status=repo.is_dirty()
 print(date)
+repo__remote = git.remote.RemoteProgress()
+print(repo__remote)
