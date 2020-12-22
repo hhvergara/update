@@ -12,7 +12,7 @@ def git_command(cmd='status', path = '.'):
     return [out, error]
 
 
-print (git_command('status',git_path)
+print (git_command('status',git_path))
 print (git_command('fetch',git_path))
 print (git_command('pull',git_path))
 print (git_command('status',git_path))
