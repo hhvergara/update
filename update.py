@@ -8,24 +8,35 @@ logging.basicConfig(level=logging.INFO)
 repo = git.Repo(git_path)
 
 hcommit = repo.head.commit
-print(hcommit.diff())                  # diff tree against index
-print(hcommit.diff('HEAD~1'))          # diff tree against previous tree
+diff = hcommit.diff()                  # diff tree against index
+diff_head = hcommit.diff('HEAD~1')          # diff tree against previous tree
+[print(x)for x in diff_head]
+diff_head[0]
 
-print(hcommit.diff(None))              # diff tree against working tree
-
+diff_none = hcommit.diff(None)              # diff tree against working tree
+[print(x)for x in diff_none]
 index = repo.index
 
 # diff index against itself yielding empty diff
-print(index.diff())
+diff_index = index.diff()
 
-print(index.diff(None))                # diff index against working copy
+diff_i_none = index.diff(None)                # diff index against working copy
 
-print(index.diff('HEAD'))              # diff index against current HEAD tree
+diff_i_head = index.diff('HEAD')              # diff index against current HEAD tree
 
-try:
-    repo.remotes.origin.pull("")
-except:
-    pass
+# Traverse added Diff objects only
+for diff_added in hcommit.diff('HEAD~1').iter_change_type('A'):
+    print(diff_added)
+
+diff_index_none = repo.index.diff(None)
+print(diff_index_none[0].a_blob)
+
+
+
+# try:
+#     repo.remotes.origin.pull("")
+# except:
+#     pass
 hcommit = repo.head.commit
 hcommit.diff(None)              # diff tree against working tree
 # Traverse added Diff objects only
