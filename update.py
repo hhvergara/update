@@ -9,13 +9,16 @@ repo = git.Repo(git_path)
 status=repo.is_dirty()
 repo_update = repo.remotes.origin.update()
 print(repo_update.fetch)
+status=repo.is_dirty()
 
 repo_fetch = repo.remotes.origin.fetch(verbose=True)
 print(repo_fetch)
 print(repo_fetch[0].ref.log)
+status=repo.is_dirty()
 
 repo_remote =  git.remote.Remote(repo,name='origin')
 repo_remote.fetch(verbose=True)
+status=repo.is_dirty()
 
 hcommit = repo.head.commit
 diff = hcommit.diff()                  # diff tree against index
