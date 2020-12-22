@@ -20,6 +20,8 @@ status=repo.is_dirty()
 
 repo_remote =  git.remote.Remote(repo,name='origin')
 repo_remote.fetch(verbose=True)
+list_repo = repo_remote.list_items(repo)
+[print(x) for x in list_repo]
 status=repo.is_dirty()
 
 hcommit = repo.head.commit
