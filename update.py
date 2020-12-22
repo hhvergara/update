@@ -9,6 +9,8 @@ repo = git.Repo(git_path)
 status=repo.is_dirty()
 repo_update = repo.remotes.origin.update()
 print(repo_update.fetch)
+fetch_info = git.remote.FetchInfo
+print(fetch_info.note)
 status=repo.is_dirty()
 
 repo_fetch = repo.remotes.origin.fetch(verbose=True)
