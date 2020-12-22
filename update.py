@@ -5,6 +5,7 @@ import logging
 git_path = f'{os.getcwd()}/update'
 
 logging.basicConfig(level=logging.INFO)
+repo = git.Repo(git_path)
 
 hcommit = repo.head.commit
 print(hcommit.diff())                  # diff tree against index
@@ -22,7 +23,6 @@ print(index.diff(None))                # diff index against working copy
 print(index.diff('HEAD'))              # diff index against current HEAD tree
 
 try:
-    repo = git.Repo(git_path)
     repo.remotes.origin.pull("")
 except:
     pass
