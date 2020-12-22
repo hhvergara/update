@@ -1,9 +1,10 @@
 import git
 import os
 import logging
+import git_status
 
 git_path = f'{os.getcwd()}/update'
-
+print(git_status.get(git_path))
 logging.basicConfig(level=logging.INFO)
 repo = git.Repo(git_path)
 status=repo.is_dirty()
@@ -12,6 +13,7 @@ print(repo_update.fetch)
 fetch_info = git.remote.FetchInfo
 print(fetch_info.note)
 status=repo.is_dirty()
+print(git_status.get(git_path))
 
 repo_fetch = repo.remotes.origin.fetch(verbose=True)
 print(repo_fetch)
@@ -20,6 +22,7 @@ status=repo.is_dirty()
 
 repo_remote =  git.remote.Remote(repo,name='origin')
 repo_remote.fetch(verbose=True)
+tagss = repo_remote.tags()
 list_repo = repo_remote.list_items(repo)
 [print(x) for x in list_repo]
 status=repo.is_dirty()
