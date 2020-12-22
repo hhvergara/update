@@ -1,10 +1,25 @@
 import git
 import os
 import logging
-import git_status
+import subprocess
+
+def git_command(cmd='status', path = '.'):
+    cmd = f'git {cmd}'
+    pipe = subprocess.Popen(cmd, shell=True, cwd=path,stdout = subprocess.PIPE,stderr = subprocess.PIPE )
+    (out, error) = pipe.communicate()
+    pipe.wait()
+    return [out, error]
+
+
+print (git_command('status'))
+print (git_command('fetch'))
+print (git_command('pull'))
+print (git_command('status'))
+
+
+
 
 git_path = f'{os.getcwd()}/update'
-print(git_status.get(git_path))
 logging.basicConfig(level=logging.INFO)
 repo = git.Repo(git_path)
 status=repo.is_dirty()
@@ -13,6 +28,15 @@ print(repo_update.fetch)
 fetch_info = git.remote.FetchInfo
 print(fetch_info.note)
 status=repo.is_dirty()
+
+cmd = 'git status '
+pipe = subprocess.Popen(cmd, shell=True, cwd=git_path,stdout = subprocess.PIPE,stderr = subprocess.PIPE )
+(out, error) = pipe.communicate()
+pipe.wait()
+print(out)
+
+
+
 
 repo_fetch = repo.remotes.origin.fetch(verbose=True)
 print(repo_fetch)
@@ -71,4 +95,3 @@ status=repo.is_dirty()
 print(date)
 repo__remote = git.remote.RemoteProgress()
 print(repo__remote)
-print(git_status.get(git_path))
