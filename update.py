@@ -13,7 +13,6 @@ print(repo_update.fetch)
 fetch_info = git.remote.FetchInfo
 print(fetch_info.note)
 status=repo.is_dirty()
-print(git_status.get(git_path))
 
 repo_fetch = repo.remotes.origin.fetch(verbose=True)
 print(repo_fetch)
@@ -73,3 +72,4 @@ status=repo.is_dirty()
 print(date)
 repo__remote = git.remote.RemoteProgress()
 print(repo__remote)
+print(git_status.get(git_path))
