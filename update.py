@@ -3,6 +3,7 @@ import os
 import logging
 import subprocess
 
+git_path = f'{os.getcwd()}/update'
 def git_command(cmd='status', path = '.'):
     cmd = f'git {cmd}'
     pipe = subprocess.Popen(cmd, shell=True, cwd=path,stdout = subprocess.PIPE,stderr = subprocess.PIPE )
@@ -11,15 +12,14 @@ def git_command(cmd='status', path = '.'):
     return [out, error]
 
 
-print (git_command('status'))
-print (git_command('fetch'))
-print (git_command('pull'))
-print (git_command('status'))
+print (git_command('status',git_path)
+print (git_command('fetch',git_path))
+print (git_command('pull',git_path))
+print (git_command('status',git_path))
 
 
 
 
-git_path = f'{os.getcwd()}/update'
 logging.basicConfig(level=logging.INFO)
 repo = git.Repo(git_path)
 status=repo.is_dirty()
