@@ -62,4 +62,5 @@ print(tag.object.message)
 print(tag.commit.author.name)
 date = tag.commit.committed_datetime
 date = f'{date.day}-{date.month}-{date.year}'
+status=repo.is_dirty()
 print(date)
