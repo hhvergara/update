@@ -6,6 +6,10 @@ git_path = f'{os.getcwd()}/update'
 
 logging.basicConfig(level=logging.INFO)
 repo = git.Repo(git_path)
+repo_fetch = repo.remotes.origin.fetch(verbose=True)
+
+repo_remote =  git.remote.Remote(repo,name='origin')
+repo_remote.fetch(verbose=True)
 
 hcommit = repo.head.commit
 diff = hcommit.diff()                  # diff tree against index
