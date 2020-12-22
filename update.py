@@ -42,7 +42,7 @@ for diff_added in hcommit.diff('HEAD~1').iter_change_type('A'):
     print(diff_added)
 
 diff_index_none = repo.index.diff(None)
-print(diff_index_none[0].a_blob)
+# print(diff_index_none[0].a_blob)
 
 
 
