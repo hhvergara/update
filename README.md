@@ -1,2 +1,2 @@
 # update
-cambio en readme |\-|/
+cambio en readme
